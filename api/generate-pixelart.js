@@ -20,16 +20,14 @@ function pixelArtAPI(req, res) {
 
     // Handle binary data (JPEG image)
     if (response.ok) {
-      const imgData = response.text();
-
-      res.json({
-        "data": imgData
-      })
-
-
+      response.text().then((imgData) => {
+        res.json({
+          data: imgData,
+        });
+      });
     } else {
       res.json({
-        "Failed to fetch image. Status": response.status
+        "Failed to fetch image. Status": response.status,
       });
     }
   } catch (error) {
