@@ -1,6 +1,3 @@
 {
-  "cleanUrls": true,
-  "functions": {
-    "api/generate-pixelart.js": {}
-  }
+  "cleanUrls": true
 }
