@@ -12,7 +12,7 @@ function pixelArtAPI(req, res) {
 
   try {
     // Send request to the server
-    const response = await fetch(url, {
+    const response = fetch(url, {
       method: "POST",
       body: body,
       headers: header,
@@ -20,7 +20,7 @@ function pixelArtAPI(req, res) {
 
     // Handle binary data (JPEG image)
     if (response.ok) {
-      const imgData = await response.text();
+      const imgData = response.text();
 
       res.json({
         "data": imgData
