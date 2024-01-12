@@ -1,0 +1,8 @@
+{
+    "cleanUrls": true,
+    "functions": {
+        "api/generate-pixelart.js":{
+            "maxDuration": 5
+        }
+    }
+}
