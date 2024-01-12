@@ -39,4 +39,4 @@ function pixelArtAPI(req, res) {
 
   }
 }
-module.exports = pixelArtAPI;
+export default pixelArtAPI;
