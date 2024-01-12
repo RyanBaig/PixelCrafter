@@ -1,18 +1,18 @@
 import fetch from "node-fetch";
 
-function pixelArtAPI(req, res) {
+async function pixelArtAPI(req, res) {
   const url = "https://api-inference.huggingface.co/models/nerijs/pixel-art-xl";
   const token = process.env.token;
 
   const header = {
     Authorization: `Bearer ${token}`,
+    Accept: "image/jpg, image/jpeg",
   };
   const body = `pixel art, ${req.query.prompt}`;
 
-
   try {
     // Send request to the server
-    const response = fetch(url, {
+    const response = await fetch(url, {
       method: "POST",
       body: body,
       headers: header,
@@ -20,10 +20,9 @@ function pixelArtAPI(req, res) {
 
     // Handle binary data (JPEG image)
     if (response.ok) {
-      response.text().then((imgData) => {
-        res.json({
-          data: imgData,
-        });
+      const imgData = await response.text();
+      res.json({
+        data: imgData,
       });
     } else {
       res.json({
@@ -31,10 +30,11 @@ function pixelArtAPI(req, res) {
       });
     }
   } catch (error) {
+    console.error("Error:", error);
     res.json({
-      "Error": error
+      Error: "Internal Server Error",
     });
-
   }
 }
+
 export default pixelArtAPI;
