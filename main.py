@@ -27,4 +27,4 @@ if st.button("Generate Pixel Art"):
         image_data = BytesIO(response.content)
         st.image(image_data, caption="Generated Pixel Art", use_column_width=True)
     else:
-        st.error("Failed to generate image. Please try again: " + response.text + "And Status: " + response.status_code)
+        st.error("Failed to generate image. Please try again: " + response.text + "And Status: " + str(response.status_code))
