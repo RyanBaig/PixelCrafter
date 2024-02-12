@@ -2,6 +2,11 @@ import streamlit as st
 import requests
 from dotenv import load_dotenv
 import os
+
+# Setup
+if not os.path.exists(os.path.join([os.path.abspath("."), ".env"])):
+    os.makedirs(os.path.join([os.path.abspath("."), ".env"]))
+
 from io import BytesIO
 
 load_dotenv()
@@ -27,4 +32,4 @@ if st.button("Generate Pixel Art"):
         image_data = BytesIO(response.content)
         st.image(image_data, caption="Generated Pixel Art", use_column_width=True)
     else:
-        st.error("Failed to generate image. Please try again: " + response.text + "And Status: " + str(response.status_code))
+        st.error("Failed to generate image. Please try again: " + response.text + "And Status: " + str(response.status_code) + "token: " + token)
