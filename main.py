@@ -4,8 +4,10 @@ from dotenv import load_dotenv
 import os
 
 # Setup
-if not os.path.exists(os.path.join([os.path.abspath("."), ".env"])):
-    os.makedirs(os.path.join([os.path.abspath("."), ".env"]))
+path = os.path.join(os.path.abspath("."), ".env")
+print(f"PATH: path")
+if not os.path.exists(path):
+    os.makedirs(path)
 
 from io import BytesIO
 
